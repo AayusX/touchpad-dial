@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#1e2540"/>
+      <stop offset="100%" stop-color="#0b0e1a"/>
+    </radialGradient>
+    <radialGradient id="disc" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3a4a6b"/>
+      <stop offset="70%" stop-color="#232c46"/>
+      <stop offset="100%" stop-color="#151b30"/>
+    </radialGradient>
+    <radialGradient id="core" cx="35%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#5b7cff"/>
+      <stop offset="100%" stop-color="#2c47c4"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="200" fill="none" stroke="#ffffff11" stroke-width="1"/>
+
+  <!-- dial disc -->
+  <circle cx="256" cy="256" r="175" fill="url(#disc)" stroke="#ffffff22" stroke-width="2"/>
+
+  <!-- tick marks -->
+  <g stroke="#a5988a" stroke-width="3" stroke-linecap="round" opacity="0.7">
+    <line x1="256" y1="86"  x2="256" y2="104"/>
+    <line x1="256" y1="408" x2="256" y2="426"/>
+    <line x1="86"  y1="256" x2="104" y2="256"/>
+    <line x1="408" y1="256" x2="426" y2="256"/>
+    <line x1="136" y1="136" x2="149" y2="149" opacity="0.4"/>
+    <line x1="376" y1="136" x2="363" y2="149" opacity="0.4"/>
+    <line x1="136" y1="376" x2="149" y2="363" opacity="0.4"/>
+    <line x1="376" y1="376" x2="363" y2="363" opacity="0.4"/>
+  </g>
+
+  <!-- active segment (highlight) -->
+  <path d="M256 256 L420 256 A164 164 0 0 0 256 92 Z"
+        fill="#4d7cff" opacity="0.45"/>
+
+  <!-- center core -->
+  <circle cx="256" cy="256" r="72" fill="url(#core)" stroke="#ffffff33" stroke-width="2"/>
+  <circle cx="256" cy="256" r="9" fill="#ffffff" opacity="0.9"/>
+</svg>

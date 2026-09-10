@@ -1,0 +1,11 @@
+# Creator Dial - udev rule for touchpad and DialPad permissions
+# Allows user-level access to I2C and input devices
+
+# ASUS Touchpad with DialPad
+SUBSYSTEM=="input", KERNEL=="event*", ATTRS{name}=="*ASUE*Touchpad", MODE="0660", GROUP="input"
+
+# DialPad virtual device
+SUBSYSTEM=="input", KERNEL=="event*", ATTRS{name}=="*DialPad*", MODE="0660", GROUP="input"
+
+# I2C bus access for DialPad LED control
+SUBSYSTEM=="i2c-dev", KERNEL=="i2c-[0-9]*", MODE="0660", GROUP="i2c"

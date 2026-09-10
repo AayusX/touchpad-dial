@@ -1,0 +1,19 @@
+[Unit]
+Description=Creator Dial UI
+After=creatordial-daemon.service graphical-session.target
+Wants=creatordial-daemon.service graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/share/creatordial/.venv/bin/python3 %h/.local/share/creatordial/creatordial/ui_main.py
+Restart=on-failure
+RestartSec=2
+Environment="XDG_RUNTIME_DIR=%t"
+Environment="DISPLAY=:0"
+Environment="WAYLAND_DISPLAY=wayland-0"
+Environment="DBUS_SESSION_BUS_ADDRESS=unix:path=%t/bus"
+Environment="XDG_SESSION_TYPE=wayland"
+Environment="HOME=%h"
+
+[Install]
+WantedBy=graphical-session.target

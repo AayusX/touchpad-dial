@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-import:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install libevdev python-periphery pyinotify xkbcommon pygobject
+          sudo apt-get update -qq
+          sudo apt-get install -y libevdev2 libgirepository1.0-dev gir1.2-glib-2.0
+
+      - name: Compile all modules
+        run: |
+          python -m compileall -q creatordial
+          echo "compileall OK"
+
+      - name: Import-level smoke test (no hardware)
+        run: |
+          python -c "import creatordial.daemon; print('daemon imports OK')"
+          python -c "import creatordial.plugins.volume, creatordial.plugins.brightness, creatordial.plugins.media, creatordial.plugins.keyboard, creatordial.plugins.screen, creatordial.plugins.nightlight, creatordial.plugins.gpu; print('all plugins import OK')"
+          python -c "import creatordial.core.action_executor, creatordial.core.engine, creatordial.core.gesture_engine, creatordial.core.input_reader, creatordial.core.hardware_detector; print('core imports OK')"
+
+      - name: README checks
+        run: |
+          test -f README.md && grep -q "Touchpad Dial" README.md
+          test -f LICENSE
+          test -f pyproject.toml

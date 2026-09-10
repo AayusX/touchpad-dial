@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "creatordial"
+version = "1.0.0"
+description = "Turn any touchpad into a creative dial — volume, brightness, media, and more, with a tap-and-rotate gesture on Linux"
+readme = "README.md"
+license = {text = "GPL-2.0"}
+requires-python = ">=3.10"
+authors = [
+    {name = "Aayush Bhandari", email = "aayusx@users.noreply.github.com"},
+]
+keywords = ["touchpad", "dial", "gesture", "wayland", "x11", "linux", "asus", "creator", "dialpad"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Desktop Environment",
+    "Topic :: System :: Hardware",
+    "Topic :: Multimedia :: Sound/Audio",
+]
+dependencies = [
+    "libevdev>=0.13.1",
+    "PySide6>=6.6.0",
+]
+
+[project.optional-dependencies]
+system = [
+    "python-periphery>=2.4.0",
+    "pyinotify>=0.9.6",
+    "xkbcommon>=1.0.0",
+    "PyGObject>=3.48.0",
+]
+
+[project.scripts]
+creatordial = "creatordial.daemon:main"
+creatordial-ui = "creatordial.ui_main:main"
+creatordial-debug = "creatordial.debug:main"
+
+[project.urls]
+Homepage = "https://github.com/AayusX/touchpad-dial"
+Repository = "https://github.com/AayusX/touchpad-dial"
+Documentation = "https://github.com/AayusX/touchpad-dial/tree/main/docs"
+Issues = "https://github.com/AayusX/touchpad-dial/issues"
+
+[tool.setuptools.packages.find]
+include = ["creatordial*"]

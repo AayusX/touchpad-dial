@@ -1,0 +1,6 @@
+libevdev>=0.13.1
+pyinotify>=0.9.6
+python-periphery>=2.4.0
+PySide6>=6.6.0
+xkbcommon>=1.0.0
+PyGObject>=3.48.0

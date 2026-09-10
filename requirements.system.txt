@@ -1,0 +1,10 @@
+python3>=3.10
+python3-pip
+python3-venv
+python3-dev
+libevdev-dev
+brightnessctl
+playerctl
+gammastep
+xdotool
+i2c-tools

@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg
+build/
+dist/
+.eggs/
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local config / runtime
+config.json
+*.log
+
+# Rendered previews (regenerate with scripts/render_preview.py)
+assets/rendered/
+assets/frames/
+
+# Systemd / installer temporary files
+*.service.tmp
+
+# Misc
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/

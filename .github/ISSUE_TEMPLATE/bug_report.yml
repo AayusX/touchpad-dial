@@ -1,0 +1,43 @@
+name: Bug report
+description: Something isn't working as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! Please fill in as much detail as you can.
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Distribution, desktop environment, and version
+      placeholder: "Kubuntu 24.04 / KDE Plasma 6"
+    validations:
+      required: true
+  - type: input
+    id: hardware
+    attributes:
+      label: Touchpad / hardware
+      description: Output of `creatordial-debug` (or `debug.py`)
+      placeholder: "ASUE1A00:00 04F3:31DE Touchpad, event5, max 3880x2299"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: What gesture did you do, what did you expect, what happened?
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / traceback
+      description: Paste `journalctl --user -u creatordial-daemon --no-pager -n 100`
+      render: bash
+  - type: textarea
+    id: config
+    attributes:
+      label: Configuration
+      description: Your `~/.config/creatordial/config.json` if modified
+      render: json
